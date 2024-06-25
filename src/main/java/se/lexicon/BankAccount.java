@@ -1,7 +1,9 @@
 package se.lexicon;
 
 public class BankAccount {
-    private String accountNumber;
+    private static final int accountNumberCounter = 1;
+    private static long lastSetAccountNumber;
+    private long accountNumber;
     private String customerName;
     private String phoneNumber;
     private String email;
@@ -11,7 +13,16 @@ public class BankAccount {
         System.out.println("Default constructor");
     }
 
-    BankAccount(String accountNumber, String customerName, String phoneNumber, String email, double balance) {
+    BankAccount(String customerName, String phoneNumber, String email, double balance) {
+        this.accountNumber = lastSetAccountNumber + accountNumberCounter;
+        lastSetAccountNumber = accountNumber;
+        setCustomerName(customerName);
+        setPhoneNumber(phoneNumber);
+        setEmail(email);
+        setBalance(balance);
+    }
+
+    BankAccount(long accountNumber, String customerName, String phoneNumber, String email, double balance) {
         this();
         setAccountNumber(accountNumber);
         setCustomerName(customerName);
@@ -20,7 +31,7 @@ public class BankAccount {
         setBalance(balance);
     }
 
-    public String getAccountNumber() {
+    public long getAccountNumber() {
         return accountNumber;
     }
 
@@ -40,9 +51,12 @@ public class BankAccount {
         return balance;
     }
 
-    public void setAccountNumber(String accountNumber) {
-        validateBankAccountParams(accountNumber, "Account Number");
+    public void setAccountNumber(long accountNumber) {
+        if(accountNumber <= 0 || String.valueOf(accountNumber).trim().isEmpty()) {
+            throw new IllegalArgumentException("Account Number cannot zero/less than zero or empty...");
+        }
         this.accountNumber = accountNumber;
+        lastSetAccountNumber = accountNumber;
     }
 
     public void setCustomerName(String customerName) {
@@ -72,8 +86,8 @@ public class BankAccount {
     }
 
     public void displayBankAccountDetails() {
-        System.out.println("Account Number: " + accountNumber + " Customer Name: " + customerName +
-                " Phone Number: " + phoneNumber + " Email: " + email + " Balance: " + balance);
+        System.out.println("Account Number: " + getAccountNumber() + " Customer Name: " + getCustomerName() +
+                " Phone Number: " + getPhoneNumber() + " Email: " + getEmail() + " Balance: " + getBalance());
     }
 
     public void depositAmount(double creditAmt) {

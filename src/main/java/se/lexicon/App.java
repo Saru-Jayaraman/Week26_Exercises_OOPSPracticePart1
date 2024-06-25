@@ -10,12 +10,15 @@ public class App
 {
     public static void main( String[] args )
     {
-        BankAccount obj1 = new BankAccount("56107829", "Sarumathi Jayaraman",
+        BankAccount obj1 = new BankAccount(56107829, "Sarumathi Jayaraman",
                 "7708489028", "sarumathijayaraman@gmail.com", 10000);
         obj1.displayBankAccountDetails();
-        BankAccount obj2 = new BankAccount("56107678", "Pragya Satheeshkumar",
+        BankAccount obj2 = new BankAccount("Pragya Satheeshkumar",
                 "7703464325", "pragyasatheeshkumar@gmail.com", 5000);
         obj2.displayBankAccountDetails();
+        BankAccount obj3 = new BankAccount("Satheeshkumar Chandran",
+                "7703445678", "satheeshkumarchandran@gmail.com", 15000);
+        obj3.displayBankAccountDetails();
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter amount to deposit to Sarumathi Jayaraman account:");
