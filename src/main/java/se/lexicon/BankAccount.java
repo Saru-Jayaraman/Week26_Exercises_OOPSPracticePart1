@@ -15,6 +15,7 @@ public class BankAccount {
 
     BankAccount(String customerName, String phoneNumber, String email, double balance) {
         this.accountNumber = lastSetAccountNumber + accountNumberCounter;
+        //Setting the last account number to static variable
         lastSetAccountNumber = accountNumber;
         setCustomerName(customerName);
         setPhoneNumber(phoneNumber);
@@ -56,7 +57,7 @@ public class BankAccount {
             throw new IllegalArgumentException("Account Number cannot zero/less than zero or empty...");
         }
         this.accountNumber = accountNumber;
-        lastSetAccountNumber = accountNumber;
+        lastSetAccountNumber = accountNumber; //Setting the last account number to static variable
     }
 
     public void setCustomerName(String customerName) {

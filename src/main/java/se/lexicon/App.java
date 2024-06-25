@@ -21,22 +21,22 @@ public class App
         obj3.displayBankAccountDetails();
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter amount to deposit to Sarumathi Jayaraman account:");
+        System.out.println("Enter amount to deposit to " + obj1.getCustomerName() + " account:");
         double depositAmt1 = scanner.nextDouble();
         obj1.depositAmount(depositAmt1);
         System.out.println(obj1.getBalance());
 
-        System.out.println("Enter amount to deposit to Pragya Satheeshkumar account:");
+        System.out.println("Enter amount to deposit to " + obj2.getCustomerName() + " account:");
         double depositAmt2 = scanner.nextDouble();
         obj2.depositAmount(depositAmt2);
         System.out.println(obj2.getBalance());
 
-        System.out.println("Enter amount to withdraw from Sarumathi Jayaraman account:");
+        System.out.println("Enter amount to deposit to " + obj1.getCustomerName() + " account:");
         double withdrawAmt1 = scanner.nextDouble();
         String withdrawnMessage1 = obj1.withdrawAmount(withdrawAmt1);
         System.out.println(withdrawnMessage1);
 
-        System.out.println("Enter amount to withdraw from Pragya Satheeshkumar account:");
+        System.out.println("Enter amount to deposit to " + obj2.getCustomerName() + " account:");
         double withdrawAmt2 = scanner.nextDouble();
         String withdrawnMessage2 = obj2.withdrawAmount(withdrawAmt2);
         System.out.println(withdrawnMessage2);
