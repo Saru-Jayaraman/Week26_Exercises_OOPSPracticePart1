@@ -1,20 +1,20 @@
 package se.lexicon;
 
 public class BankAccount {
-    private static final int accountNumberCounter = 1;
+    private static final int ACCOUNT_NUMBER_COUNTER = 1;
     private static long lastSetAccountNumber;
     private long accountNumber;
     private String customerName;
     private String phoneNumber;
     private String email;
     private double balance;
-    public double MIN_BALANCE_AMOUNT = 500;
-    BankAccount() {
+    public double min_balance_amount = 500;
+    public BankAccount() {
         System.out.println("Default constructor");
     }
 
-    BankAccount(String customerName, String phoneNumber, String email, double balance) {
-        this.accountNumber = lastSetAccountNumber + accountNumberCounter;
+    public BankAccount(String customerName, String phoneNumber, String email, double balance) {
+        this.accountNumber = lastSetAccountNumber + ACCOUNT_NUMBER_COUNTER;
         //Setting the last account number to static variable
         lastSetAccountNumber = accountNumber;
         setCustomerName(customerName);
@@ -23,7 +23,7 @@ public class BankAccount {
         setBalance(balance);
     }
 
-    BankAccount(long accountNumber, String customerName, String phoneNumber, String email, double balance) {
+    public BankAccount(long accountNumber, String customerName, String phoneNumber, String email, double balance) {
         this();
         setAccountNumber(accountNumber);
         setCustomerName(customerName);
@@ -80,7 +80,7 @@ public class BankAccount {
         this.balance = balance;
     }
 
-    public void validateBankAccountParams(String paramName, String paramFullName) {
+    private void validateBankAccountParams(String paramName, String paramFullName) {
         if(paramName == null || paramName.trim().isEmpty()) {
             throw new IllegalArgumentException(paramFullName + " is null or empty...");
         }
@@ -97,7 +97,7 @@ public class BankAccount {
 
     public String withdrawAmount(double debitAmt) {
         String withdrawnMessage;
-        if((balance-debitAmt) >= MIN_BALANCE_AMOUNT) {
+        if((balance-debitAmt) >= min_balance_amount) {
             balance = balance - debitAmt;
             withdrawnMessage = String.valueOf(balance);
         } else {
